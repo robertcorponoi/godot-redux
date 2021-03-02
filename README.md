@@ -1,4 +1,10 @@
-# Godot Redux - A gdscript implementation of Redux.
+<p align="center">
+  <img width="500" height="500" src="https://raw.githubusercontent.com/robertcorponoi/graphics/master/godot-redux/logo/godot-redux-logo.png">
+</p>
+
+<h1 align="center">Godot Redux</h1>
+
+<p align="center">A gdscript implementation of Redux.<p>
 
 Redux is a way to manage and update your application's state using events
 called actions. The Redux store serves as a centralized place for data that
