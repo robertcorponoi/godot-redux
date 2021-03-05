@@ -80,11 +80,11 @@ enum Action {
 
 func reducer(state, action):
     match action:
-        Action::INCREMENT:
+        Action.INCREMENT:
             return {
                 "counter": state.counter + 1,
             }
-        Action::DECREMENT:
+        Action.DECREMENT:
             return {
                 "counter": state.counter - 1,
             }
@@ -115,11 +115,11 @@ enum Action {
 
 func reducer(state, action):
     match action:
-        Action::INCREMENT:
+        Action.INCREMENT:
             return {
                 "counter": state.counter + 1,
             }
-        Action::DECREMENT:
+        Action.DECREMENT:
             return {
                 "counter": state.counter - 1,
             }
@@ -175,17 +175,17 @@ and reverse it:
 ```gd
 func reverse_middleware(state, action):
     match action {
-        Action::INCREMENT:
-            return Action::DECREMENT
-        Action::DECREMENT:
-            return Action::INCREMENT
+        Action.INCREMENT:
+            return Action.DECREMENT
+        Action.DECREMENT:
+            return Action.INCREMENT
 
 func _ready():
     var store = Store.new(state, self, 'reducer')
     store.add_middleware(self, 'reverse_middleware')
 
     This will actually run the `DECREMENT` action because of our middleware.
-    store.dispatch(Action::INCREMENT)
+    store.dispatch(Action.INCREMENT)
 ```
 
 ## Full Example
@@ -224,11 +224,11 @@ enum Action {
 ```gd
 func reducer(state, action):
     match action:
-        Action::INCREMENT:
+        Action.INCREMENT:
             return {
                 "counter": state.counter + 1,
             }
-        Action::DECREMENT:
+        Action.DECREMENT:
             return {
                 "counter": state.counter - 1,
             }
@@ -250,9 +250,9 @@ Since our reducer function is just named 'reducer' and it's on the current class
 ```gd
 func _ready():
     var store = Store.new(state, self, 'reducer')
-    store.dispatch(action.INCREMENT)
-    store.dispatch(action.INCREMENT)
-    store.dispatch(action.DECREMENT)
+    store.dispatch(Action.INCREMENT)
+    store.dispatch(Action.INCREMENT)
+    store.dispatch(Action.DECREMENT)
 ```
 
 If everything worked correctly, this should put the counter at 1, so let's see:
@@ -260,9 +260,9 @@ If everything worked correctly, this should put the counter at 1, so let's see:
 ```gd
 func _ready():
     var store = Store.new(state, self, 'reducer')
-    store.dispatch(action.INCREMENT)
-    store.dispatch(action.INCREMENT)
-    store.dispatch(action.DECREMENT)
+    store.dispatch(Action.INCREMENT)
+    store.dispatch(Action.INCREMENT)
+    store.dispatch(Action.DECREMENT)
 
     print(store.state()) # { "counter": 1 }
 ```
@@ -290,10 +290,10 @@ func _ready():
     store.add_middleware(self, 'reverse_action')
 
 func reverse_action(state, action):
-    if (action == action.INCREMENT):
-        return action.DECREMENT
-    elif (action == action.DECREMENT):
-        return action.INCREMENT
+    if (action == Action.INCREMENT):
+        return Action.DECREMENT
+    elif (action == Action.DECREMENT):
+        return Action.INCREMENT
 ```
 
 Notice that the `add_middleware` is similar to `subscribe` in that it takes the class instance that contains the middleware function and then the name of the middleware function as arguments.
@@ -305,17 +305,17 @@ func _ready():
     var store = Store.new(state, self, 'reducer')
     store.add_middleware(self, 'reverse_action')
 
-    store.dispatch(action.INCREMENT)
-    store.dispatch(action.INCREMENT)
-    store.dispatch(action.DECREMENT)
+    store.dispatch(Action.INCREMENT)
+    store.dispatch(Action.INCREMENT)
+    store.dispatch(Action.DECREMENT)
 
     print(store.state()) # { "counter": -1 }
 
 func reverse_action(state, action):
-    if (action == action.INCREMENT):
-        return action.DECREMENT
-    elif (action == action.DECREMENT):
-        return action.INCREMENT
+    if (action == Action.INCREMENT):
+        return Action.DECREMENT
+    elif (action == Action.DECREMENT):
+        return Action.INCREMENT
 ```
 
 Instead of returning 1 as the value of the counter it should now return -1.
@@ -342,11 +342,11 @@ enum Action {
 
 func reducer(state, action):
     match action:
-        Action::INCREMENT:
+        Action.INCREMENT:
             return {
                 "counter": state.counter + 1,
             }
-        Action::DECREMENT:
+        Action.DECREMENT:
             return {
                 "counter": state.counter - 1,
             }
@@ -399,11 +399,11 @@ enum Action {
 
 func reducer(state, action):
     match action:
-        Action::INCREMENT:
+        Action.INCREMENT:
             return {
                 "counter": state.counter + 1,
             }
-        Action::DECREMENT:
+        Action.DECREMENT:
             return {
                 "counter": state.counter - 1,
             }
@@ -446,18 +446,18 @@ enum Action {
 
 func reducer(state, action):
     match action:
-        Action::INCREMENT:
+        Action.INCREMENT:
             return {
                 "counter": state.counter + 1,
             }
-        Action::DECREMENT:
+        Action.DECREMENT:
             return {
                 "counter": state.counter - 1,
             }
 
 func _ready():
     var store = Store.new(state, self, 'reducer')
-    store.dispatch(Action::INCREMENT)
+    store.dispatch(Action.INCREMENT)
 ```
 
 ### subscribe
@@ -483,11 +483,11 @@ enum Action {
 
 func reducer(state, action):
     match action:
-        Action::INCREMENT:
+        Action.INCREMENT:
             return {
                 "counter": state.counter + 1,
             }
-        Action::DECREMENT:
+        Action.DECREMENT:
             return {
                 "counter": state.counter - 1,
             }
@@ -516,17 +516,17 @@ func _ready():
     var store = Store.new(state, self, 'reducer')
     store.add_middleware(self, 'reverse_action')
 
-    store.dispatch(action.INCREMENT)
-    store.dispatch(action.INCREMENT)
-    store.dispatch(action.DECREMENT)
+    store.dispatch(Action.INCREMENT)
+    store.dispatch(Action.INCREMENT)
+    store.dispatch(Action.DECREMENT)
 
     print(store.state()) # { "counter": -1 }
 
 func reverse_action(state, action):
-    if (action == action.INCREMENT):
-        return action.DECREMENT
-    elif (action == action.DECREMENT):
-        return action.INCREMENT
+    if (action == Action.INCREMENT):
+        return Action.DECREMENT
+    elif (action == Action.DECREMENT):
+        return Action.INCREMENT
 ```
 
 ## License
